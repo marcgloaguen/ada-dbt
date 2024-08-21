@@ -12,6 +12,9 @@ WITH hosts_raw AS (
 		host_identity_verified = 't' AS is_identity_verified
     FROM {{ ref("hosts_snapshot")}}
     WHERE DBT_VALID_TO is null
+    AND host_location is not null
+    AND host_is_superhost is not null
+    AND host_neighbourhood is not null
     )
 SELECT *
 from hosts_raw

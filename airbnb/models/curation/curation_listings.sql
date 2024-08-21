@@ -24,3 +24,4 @@ WITH listings_raw AS
     WHERE DBT_VALID_TO is null)
 SELECT *
 FROM listings_raw
+WHERE price is not null

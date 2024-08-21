@@ -7,34 +7,34 @@
         columns:
           - name: host_id
             description: Identifiant unique de l'hôte
-            tests:
+            data_tests:
               - unique
               - not_null
 
           - name: host_name
-            tests:
+            data_tests:
               - not_null
 
           - name: host_since
-            tests:
+            data_tests:
               - not_null
 
           - name: host_location
-            tests:
+            data_tests:
               - not_null
 
           - name: host_is_superhost
-            tests:
+            data_tests:
               - not_null
               - accepted_values:
                   values: ['t','f']
 
           - name: host_neighbourhood
-            tests:
+            data_tests:
               - not_null
 
           - name: host_identity_verified
-            tests:
+            data_tests:
               - not_null
               - accepted_values:
                   values: ['t','f']
@@ -42,42 +42,42 @@
       - name: listings
         columns:
           - name: id
-            test:
+            data_tests:
               - not_null
               - unique
 
           - name: listing_url
-            tests:
+            data_tests:
               - not_null
               - unique
 
           - name: name
-            tests:
+            data_tests:
               - not_null
 
           - name: host_id
-            tests:
+            data_tests:
               - not_null
               - relationships:
                   to: source('raw_airbnb_data', 'hosts')
                   field: host_id
 
           - name: property_type
-            tests:
+            data_tests:
               - not_null
 
           - name: accommodates
-            tests:
+            data_tests:
               - not_null
 
       - name: reviews
         columns:
         - name: date
-          tests:
+          data_tests:
             - not_null
 
         - name: listing_id
-          tests:
+          data_tests:
             - not_null
             - relationships:
                 to: source('raw_airbnb_data','listings')
