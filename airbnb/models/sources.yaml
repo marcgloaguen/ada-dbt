@@ -1,10 +1,84 @@
-version: 2
-
-sources:
+ sources:
   - name: raw_airbnb_data
     database: airbnb
     schema: raw
     tables:
       - name: hosts
+        columns:
+          - name: host_id
+            description: Identifiant unique de l'hôte
+            tests:
+              - unique
+              - not_null
+
+          - name: host_name
+            tests:
+              - not_null
+
+          - name: host_since
+            tests:
+              - not_null
+
+          - name: host_location
+            tests:
+              - not_null
+
+          - name: host_is_superhost
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['t','f']
+
+          - name: host_neighbourhood
+            tests:
+              - not_null
+
+          - name: host_identity_verified
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['t','f']
+
       - name: listings
+        columns:
+          - name: id
+            test:
+              - not_null
+              - unique
+
+          - name: listing_url
+            tests:
+              - not_null
+              - unique
+
+          - name: name
+            tests:
+              - not_null
+
+          - name: host_id
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw_airbnb_data', 'hosts')
+                  field: host_id
+
+          - name: property_type
+            tests:
+              - not_null
+
+          - name: accommodates
+            tests:
+              - not_null
+
       - name: reviews
+        columns:
+        - name: date
+          tests:
+            - not_null
+
+        - name: listing_id
+          tests:
+            - not_null
+            - relationships:
+                to: source('raw_airbnb_data','listings')
+                field: id
