@@ -53,6 +53,11 @@ models:
         description: Prix par nuitée
         data_tests:
           - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+
+
 
   - name: curation_reviews
     description: Table indiquant par listing et par jour le nombre de commentaires reçus

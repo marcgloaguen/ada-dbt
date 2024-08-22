@@ -70,6 +70,19 @@
             data_tests:
               - not_null
 
+          - name: minimum_nights
+            data_tests:
+              - not_null
+              - dbt_utils.accepted_range:
+                  min_value: 1
+                  inclusive: false
+
+          - name: maximum_nights
+            data_tests:
+              - not_null
+              - dbt_utils.accepted_range:
+                  min_value: 1
+
       - name: reviews
         columns:
         - name: date
