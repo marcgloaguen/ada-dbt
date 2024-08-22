@@ -1,5 +1,7 @@
 with tourists_per_year as (
-    SELECT year, tourists
+    SELECT
+        year
+        , tourists
    from {{ ref("tourists_per_year") }}
 )
 SELECT

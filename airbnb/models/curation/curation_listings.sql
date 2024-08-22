@@ -17,7 +17,7 @@ WITH listings_raw AS
 		bedrooms,
 		beds,
 		amenities,
-        try_cast(split_part(price, '$', 1) as float) as price,
+        {{ extraire_prix_a_partir_dun_caractere('price','$') }} as price,
 		minimum_nights,
 		maximum_nights
 	FROM {{ ref("listings_snapshot") }}

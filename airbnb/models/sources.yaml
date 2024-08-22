@@ -107,10 +107,12 @@ unit_tests:
       - input: ref('listings_snapshot')
         rows:
           - {price: '52.23$', DBT_VALID_TO: null}
-          - {price: '$52.23', DBT_VALID_TO: null}
+          - {price: '$56.23', DBT_VALID_TO: null}
     expect:
       rows:
           - {price: 52.23}
+          - {price: 56.23 }
+
 
   - name: test_is_curation_reviews_aggregation_correct
     description: "Vérifie que le compte des commentaires est bien implémenté"
