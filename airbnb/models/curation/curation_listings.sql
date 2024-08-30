@@ -1,3 +1,9 @@
+{{
+config(
+    schema=var("curation_schema","curation")
+)
+ }}
+
 WITH listings_raw AS
 	(SELECT
 		id AS listing_id,

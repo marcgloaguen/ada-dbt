@@ -1,3 +1,9 @@
+{{
+config(
+    schema=var("curation_schema","curation")
+)
+ }}
+
 with tourists_per_year as (
     SELECT
         year

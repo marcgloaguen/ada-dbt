@@ -1,3 +1,9 @@
+{{
+config(
+    schema=var("curation_schema","curation")
+)
+ }}
+
 WITH hosts_raw AS (
     SELECT
 		host_id,

@@ -42,3 +42,9 @@ seeds:
       +enabled: true
       +database: airbnb
       +schema: raw
+
+vars:
+  airbnb:
+    curation_schema: curation_dev
+    inc_database: airbnb
+    inc_schema: curation_inc
